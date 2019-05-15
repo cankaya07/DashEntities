@@ -79,11 +79,180 @@
         {
           "alias": "",
           "format": "time_series",
-          "rawSql": "select  \r\n\tcast(DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as int) as time,\r\n\tSUM([TL_BAKIYE]) as bakiye\r\nFROM \r\n\t[BooBoo].[dbo].[Kasa]",
+          "rawSql": "select  \r\n\tcast(DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as int) as time,\r\n\tSUM([ALACAK]) as bakiye\r\nFROM \r\n\t[BooBoo].[dbo].[Kasa]",
           "refId": "A"
         }
       ],
       "thresholds": "0,50,100",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alacak",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#56A64B",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 2,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 4,
+        "y": 0
+      },
+      "id": 4,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.1.6",
+      "postfix": " TL",
+      "postfixFontSize": "50%",
+      "prefix": "Borç:",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "#3274D9",
+        "full": false,
+        "lineColor": "#F2CC0C",
+        "show": true
+      },
+      "tableColumn": "time",
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "select\r\n\tcast(DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as int) as time, \r\n--\tSUM(ALACAK) as alacak\r\n--\tSUM(BAKIYE) as bakiye\r\n\tSUM(BORC) as borc \r\nfrom \r\n\tBooBoo.dbo.Kasa",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1000000",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Borç",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 2,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 9,
+        "y": 0
+      },
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.1.6",
+      "postfix": " TL",
+      "postfixFontSize": "50%",
+      "prefix": "Bakiye:",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "time",
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "select\r\n\tcast(DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as int) as time, \r\n--\tSUM(ALACAK) as alacak,\r\n\tSUM(TL_BAKIYE) as bakiye\r\n--\tSUM(BORC) as borc \r\nfrom \r\n\tBooBoo.dbo.Kasa",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "Bakiye",
@@ -96,7 +265,148 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 8,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 4,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "select\r\n \r\n\tcast(DATEDIFF(SECOND,{d '1970-01-01'}, TARIH) as int) as time,\r\n\tSUM(TL_BAKIYE) as bakiye \r\nfrom \r\n\t BooBoo.dbo.Kasa\r\ngroup by \r\n\tTARIH\r\n",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Kasa (TL) Durumu",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": 2
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 10,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "bakiyepercent",
+          "thresholds": [
+            "0",
+            "50",
+            "100"
+          ],
+          "type": "number",
+          "unit": "percent"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "",
+          "format": "table",
+          "rawSql": "select \r\n\t--cast(DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as int) as time,\r\n\tKASA_ADI,SUM(TL_BAKIYE) as bakiye,SUM(TL_BAKIYE)/(select SUM(TL_BAKIYE) from BooBoo.dbo.Kasa)*100 as bakiyepercent \r\nfrom \r\n\tBooBoo.dbo.Kasa\r\ngroup by \r\n\tKASA_ADI",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Kasalar",
+      "transform": "table",
+      "type": "table"
     }
   ],
   "schemaVersion": 18,

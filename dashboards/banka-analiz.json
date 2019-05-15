@@ -1008,7 +1008,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now/y",
     "to": "now"
   },
   "timepicker": {
