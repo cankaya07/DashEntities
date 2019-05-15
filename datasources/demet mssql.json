@@ -1,0 +1,17 @@
+{
+  "orgId": 1,
+  "name": "demet mssql",
+  "type": "mssql",
+  "typeLogoUrl": "public/app/plugins/datasource/mssql/img/sql_server_logo.svg",
+  "access": "proxy",
+  "url": ".\\SQL2K17",
+  "password": "",
+  "user": "demet",
+  "database": "PULSAR",
+  "basicAuth": false,
+  "isDefault": false,
+  "jsonData": {
+    "encrypt": "false"
+  },
+  "readOnly": false
+}

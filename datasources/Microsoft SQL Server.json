@@ -1,0 +1,17 @@
+{
+  "orgId": 1,
+  "name": "Microsoft SQL Server",
+  "type": "mssql",
+  "typeLogoUrl": "public/app/plugins/datasource/mssql/img/sql_server_logo.svg",
+  "access": "proxy",
+  "url": "192.168.1.132\\SQL2K17",
+  "password": "",
+  "user": "grafana",
+  "database": "JP",
+  "basicAuth": false,
+  "isDefault": true,
+  "jsonData": {
+    "encrypt": "false"
+  },
+  "readOnly": false
+}
