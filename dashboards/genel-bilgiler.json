@@ -15,91 +15,9 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
+  "iteration": 1557750822814,
   "links": [],
   "panels": [
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "demet mssql",
-      "fill": 1,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 27,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "format": "table",
-          "rawSql": "SELECT\n  $__timeEpoch(<time_column>),\n  <value column> as value,\n  <series name column> as metric\nFROM\n  <table name>\nWHERE\n  $__timeFilter(time_column)\nORDER BY\n  <time_column> ASC",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Panel Title",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
     {
       "circleMaxSize": "20",
       "circleMinSize": "2",
@@ -117,7 +35,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 0
       },
       "hideEmpty": false,
       "hideZero": false,
@@ -126,8 +44,8 @@
       "interval": "",
       "locationData": "table",
       "mapCenter": "Last GeoHash",
-      "mapCenterLatitude": 39.9347,
-      "mapCenterLongitude": 32.8496,
+      "mapCenterLatitude": 37.8704,
+      "mapCenterLongitude": 32.511,
       "maxDataPoints": 1,
       "mouseWheelZoom": false,
       "showLegend": false,
@@ -144,7 +62,7 @@
         {
           "alias": "",
           "format": "table",
-          "rawSql": "select \n$__unixEpochTo() AS time, \nIL,\nEnlem,\nBoylam,\n55 as value\nfrom [dbo].[WH_ST_DIM_ILLER] \nwhere IL='ANKARA'\nGROUP BY IL,Enlem,Boylam\n \n  ",
+          "rawSql": "select \n$__unixEpochTo() AS time, \nIL,\nEnlem,\nBoylam,\n10 as value\nfrom [dbo].[WH_ST_DIM_ILLER] \nwhere IL='KONYA'\nGROUP BY IL,Enlem,Boylam\n \n  ",
           "refId": "A"
         }
       ],
@@ -176,7 +94,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 21
+        "y": 13
       },
       "id": 11,
       "interval": null,
@@ -225,7 +143,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 21
+        "y": 13
       },
       "id": 16,
       "interval": null,
@@ -275,7 +193,7 @@
         "h": 6,
         "w": 4,
         "x": 12,
-        "y": 21
+        "y": 13
       },
       "id": 13,
       "interval": null,
@@ -324,7 +242,7 @@
         "h": 6,
         "w": 6,
         "x": 16,
-        "y": 21
+        "y": 13
       },
       "id": 6,
       "interval": null,
@@ -430,7 +348,7 @@
         "h": 3,
         "w": 10,
         "x": 0,
-        "y": 27
+        "y": 19
       },
       "id": 15,
       "links": [],
@@ -467,7 +385,7 @@
         "h": 6,
         "w": 6,
         "x": 10,
-        "y": 27
+        "y": 19
       },
       "id": 22,
       "legend": {
@@ -568,7 +486,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 27
+        "y": 19
       },
       "id": 23,
       "legend": {
@@ -669,7 +587,7 @@
         "h": 4,
         "w": 10,
         "x": 0,
-        "y": 30
+        "y": 22
       },
       "id": 14,
       "legend": {
@@ -770,7 +688,7 @@
         "h": 2,
         "w": 5,
         "x": 0,
-        "y": 34
+        "y": 26
       },
       "id": 10,
       "interval": null,
@@ -852,7 +770,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 34
+        "y": 26
       },
       "id": 8,
       "interval": null,
@@ -932,7 +850,7 @@
         "h": 6,
         "w": 6,
         "x": 9,
-        "y": 34
+        "y": 26
       },
       "id": 12,
       "legend": {
@@ -1020,7 +938,7 @@
         "h": 4,
         "w": 9,
         "x": 0,
-        "y": 36
+        "y": 28
       },
       "id": 17,
       "legend": {
@@ -1111,7 +1029,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 32
       },
       "id": 19,
       "legend": {
@@ -1360,12 +1278,12 @@
             "value": "AVUKAT"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "BAŞMÜFETTİŞ",
             "value": "BAŞMÜFETTİŞ"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "BAŞUZMAN",
             "value": "BAŞUZMAN"
           },
