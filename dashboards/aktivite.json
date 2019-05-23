@@ -1,0 +1,244 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "Aggregate": "last",
+      "BarPadding": 10,
+      "BaseLineColor": "#ff0000",
+      "BaseLineValue": null,
+      "DateFormat": "YYYY-MM-DD HH:mm:ss",
+      "DateTimeColName": "date",
+      "EvenRowColor": "rgba(255, 255, 255, 0.78)",
+      "FlashHighLimitBar": false,
+      "FlashLowLimitBar": false,
+      "GroupCols": 0,
+      "GroupGap": 5,
+      "GroupLabelColor": "#ffffff",
+      "GroupLabelFontSize": "200%",
+      "GroupNameFilter": "",
+      "GroupSortString": "",
+      "HighAxisColor": "#ffffff",
+      "HighBarColor": "#F2CC0C",
+      "HighLimitBarColor": "#ff0000",
+      "HighLimitBarFlashColor": "#ffa500",
+      "HighLimitBarFlashTimeout": 1000,
+      "HighLimitLineColor": "#ff0000",
+      "HighLimitValue": null,
+      "HighSideMargin": null,
+      "Horizontal": true,
+      "LabelColName": "oncelik",
+      "LabelColor": "rgb(0, 0, 0)",
+      "LabelFontSize": "100%",
+      "LabelMargin": null,
+      "LabelNameFilter": "",
+      "LableAngle": null,
+      "LowAxisColor": "#ffffff",
+      "LowBarColor": "teal",
+      "LowLimitBarColor": "#ff0000",
+      "LowLimitBarFlashColor": "#ffa500",
+      "LowLimitBarFlashTimeout": 200,
+      "LowLimitLineColor": "#ff0000",
+      "LowLimitValue": null,
+      "LowSideMargin": null,
+      "MaxLineColor": "rgb(74, 232, 12)",
+      "MaxLineValue": null,
+      "MinLineValue": null,
+      "OddRowColor": "rgb(255, 255, 255)",
+      "OutOfRangeLabelColor": "rgb(0, 0, 0)",
+      "RecolorHighLimitBar": false,
+      "RecolorLowLimitBar": false,
+      "ScaleFactor": 1,
+      "ShowBaseLine": false,
+      "ShowDate": false,
+      "ShowGroupLabels": false,
+      "ShowHighLimitLine": false,
+      "ShowLabels": true,
+      "ShowLeftAxis": true,
+      "ShowLowLimitLine": false,
+      "ShowMaxLine": false,
+      "ShowMinLine": false,
+      "ShowRightAxis": true,
+      "ShowTooltips": true,
+      "ShowValues": true,
+      "SortColName": "value",
+      "SortDirection": "ascending",
+      "TZOffsetHours": 0,
+      "TooltipDateFormat": "YYYY-MM-DD HH:mm:ss",
+      "ValueColName": "",
+      "ValueColor": "rgb(0, 0, 0)",
+      "ValueDecimals": 0,
+      "ValueFontSize": "100%",
+      "ValuePosition": "top",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "links": [],
+      "targets": [
+        {
+          "alias": "",
+          "format": "table",
+          "rawSql": "  select DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as time, t.oncelik,count(1)  FROM [BooBoo].[CRM].[Aktivite] a\r\n  LEFT JOIN [BooBoo].[CRM].[TeklifOncelik] t ON a.[Priority]=t.[ProposalPriority]\r\n  group by  t.oncelik\r\n",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Öncelik Seviyesine Göre Aktiviteler",
+      "type": "michaeldmoore-multistat-panel"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "fontSize": "70%",
+      "format": "short",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "interval": null,
+      "legend": {
+        "percentage": true,
+        "show": true,
+        "values": true
+      },
+      "legendType": "On graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "donut",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "select  DATEDIFF(SECOND,{d '1970-01-01'}, getdate()) as time,ISNULL(t.ActivityStateDescription,'N/A'),count(1)  FROM [BooBoo].[CRM].[Aktivite] a\r\nLEFT JOIN  [BooBoo].[CRM].AktiviteDurum t ON a.[ActivityState]=t.oid\r\ngroup by  t.ActivityStateDescription\r\n",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Aktivite Durum",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "columns": [],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 9,
+        "w": 23,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "",
+          "format": "table",
+          "rawSql": "SELECT         ActivityDate, Id, ActivitySubject, ActivityStateDescription, Oncelik, FirstName+' '+LastName, \r\n                         FirstName, Notes\r\nFROM            [BooBoo].CRM.Aktivite a LEFT OUTER JOIN\r\n                         [BooBoo].CRM.SatisPersonel s ON a.SalesRep = s.oid LEFT OUTER JOIN\r\n                         [BooBoo].CRM.AktiviteDurum ad ON a.ActivityState = ad.Oid LEFT OUTER JOIN\r\n                         [BooBoo].CRM.TeklifOncelik te ON a.Priority = te.ProposalPriority",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Panel Title",
+      "transform": "table",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Aktivite",
+  "uid": "oy2fPfWZz"
+}
